@@ -9,6 +9,7 @@ const progress = document.getElementById('progress');
 const thumb = document.getElementById('thumb');
 const currentTimeEl = document.getElementById('current-time');
 const durationEl = document.getElementById('duration');
+const albumBackground = document.querySelector('.album-background');
 
 // === Vinyl Spin Animation ===
 let rotation = 0;
@@ -29,14 +30,16 @@ function spin() {
 }
 
 audio.addEventListener('play', () => {
-  targetSpeed = maxSpeed;
-  spin();
-});
+    spinning = true;
+    targetSpeed = maxSpeed;
+    albumBackground.classList.add('playing');
+    spin();
+  });
 
-audio.addEventListener('pause', () => {
-  targetSpeed = 0;
-});
-
+  audio.addEventListener('pause', () => {
+    targetSpeed = 0;
+    albumBackground.classList.remove('playing');
+  });
 // === Controls ===
 playBtn.addEventListener('click', () => {
   if (audio.paused) {
@@ -79,4 +82,18 @@ audio.addEventListener('timeupdate', () => {
   progress.style.width = `${percent}%`;
   thumb.style.left = `${percent}%`;
   currentTimeEl.textContent = formatTime(audio.currentTime);
+});
+
+
+
+audio.addEventListener('play', () => {
+  spinning = true;
+  targetSpeed = maxSpeed;
+  albumBackground.style.transform = 'scale(1)'; // Zoom in
+  spin();
+});
+
+audio.addEventListener('pause', () => {
+  targetSpeed = 0;
+  albumBackground.style.transform = 'scale(0.8)'; // Zoom out
 });
