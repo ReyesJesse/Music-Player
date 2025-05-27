@@ -68,7 +68,6 @@ background: linear-gradient(135deg, #1c1c1e, rgb(22, 135, 201));
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
     margin-top: 1rem;
   }
   
@@ -87,16 +86,20 @@ background: linear-gradient(135deg, #1c1c1e, rgb(22, 135, 201));
   
   /* Optional: make all icons the same width */
   .controls button i {
-    width: 24px; /* fix icon width */
+    width: 21px; /* fix icon width */
     text-align: center;
     display: inline-block;
   }
   
   .controls button:hover {
-    background-color: #3a3a3c;
+    background-color: #1c1c1ead;
     transform: scale(1.1);
-    border-radius: 80%;
+    border-radius: 100%;
   }
+  #play i {
+    transform: translateX(2px); /* adjust left by 1px */
+  }
+  
   .time-container {
     display: flex;
     justify-content: space-between;
