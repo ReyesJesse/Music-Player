@@ -8,24 +8,28 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <title>Music Player</title>
   </head>
   <body>
+    <div id="loader-overlay">
+      <div id="loader-text">Loading... 0%</div>
+    </div>
+
     <div class="player-container">
       <div class="music-player">
         <div class="art-wrapper">
-            <div class="album-background-wrapper">
-              <img src="drakeCover.webp" alt="Background Art" class="album-background" />
-            </div>
-            <img src="vinyl.webp" alt="Album Art" class="album-art" />
+          <div class="album-background-wrapper">
+            <img src="drakeCover.webp" alt="Background Art" class="album-background" />
           </div>
-          
+          <img src="vinyl.webp" alt="Album Art" class="album-art" />
+        </div>
+
         <h2 class="song-title">Pound Cake</h2>
         <h3 class="artist-name">Drake</h3>
-        <audio id="audio-player">
-            <source src="drake-pound-cake-jayz.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
+
+        <audio preload="auto" id="audio-player">
+          <source src="drake-pound-cake-jayz.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
         </audio>
 
         <div class="progress-container" id="progress-container">

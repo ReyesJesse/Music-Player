@@ -97,3 +97,28 @@ audio.addEventListener('pause', () => {
   targetSpeed = 0;
   albumBackground.style.transform = 'scale(0.8)'; // Zoom out
 });
+// === Loader Animation ===
+const loaderOverlay = document.getElementById('loader-overlay');
+const loaderText = document.getElementById('loader-text');
+
+let loadProgress = 0;
+
+const simulateLoading = setInterval(() => {
+  if (loadProgress < 99) {
+    loadProgress += Math.floor(Math.random() * 4) + 1;
+    loadProgress = Math.min(loadProgress, 99);
+    loaderText.textContent = `Loading... ${loadProgress}%`;
+  }
+}, 50);
+
+window.addEventListener('load', () => {
+  clearInterval(simulateLoading);
+  loaderText.textContent = 'Loading... 100%';
+
+  setTimeout(() => {
+    loaderOverlay.style.opacity = '0';
+    setTimeout(() => {
+      loaderOverlay.style.display = 'none';
+    }, 500);
+  }, 300);
+});
